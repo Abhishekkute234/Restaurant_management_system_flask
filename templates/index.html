@@ -5,14 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
-    <title>Shaif's Cuisine</title>
-    <link rel="stylesheet" href="./reset.css" />
-    <link rel="stylesheet" href="./globalStyles.css" />
-    <link rel="stylesheet" href="./components.css" />
-    <!-- aos library css  -->
+    <title>restaurant</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/reset.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/globalStyles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/components.css') }}"
+    />
+
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- Add your custom css -->
-    <link rel="stylesheet" href="./home.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/home.css') }}"
+    />
   </head>
 
   <body>
@@ -21,7 +33,10 @@
       <div class="container">
         <div class="nav__wrapper">
           <a href="./index.html" class="logo">
-            <img src="./images/logo.svg" alt="shaif's cuisine" />
+            <img
+              src="{{ url_for('static', filename='./images/logo.svg') }}"
+              alt="restaurant logo"
+            />
           </a>
           <nav>
             <div class="nav__icon">
@@ -62,14 +77,39 @@
                 </svg>
               </div>
               <div class="nav__list__wrapper">
-                <li><a class="nav__link" href="./index.html">Home</a></li>
-                <li><a class="nav__link" href="./menu.html">Menu</a></li>
-                <li><a class="nav__link" href="./about.html">About</a></li>
-                <li><a class="nav__link" href="./contact.html">Contact</a></li>
                 <li>
-                  <a href="./booking.html" class="btn primary-btn"
-                    >Book Table</a
+                  <a class="nav__link" href="{{ url_for('main_page') }}"
+                    >Home</a
                   >
+                </li>
+                <li>
+                  <a class="nav__link" href="{{ url_for('menu_page') }}"
+                    >Menu</a
+                  >
+                </li>
+                <li>
+                  <a class="nav__link" href="{{ url_for('about_page') }}"
+                    >About</a
+                  >
+                </li>
+                <li>
+                  <a class="nav__link" href="{{ url_for('contact_page') }}"
+                    >Contact</a
+                  >
+                </li>
+                <li>
+                  <a class="nav__link" href="{{ url_for('booking_page') }}"
+                    >Contact</a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    href="{{ url_for('booking_page') }}"
+                    class="btn primary-btn"
+                  >
+                    Book Table
+                  </a>
                 </li>
               </div>
             </ul>
@@ -97,7 +137,10 @@
           </div>
           <div class="hero__right" data-aos="fade-right">
             <div class="hero__imgWrapper">
-              <img src="./images/heroImg.png" />
+              <img
+                src="{{ url_for('static', filename='./images/heroImg.png') }}"
+                alt="herosection"
+              />
             </div>
           </div>
         </div>
@@ -110,7 +153,10 @@
         <div class="storeInfo__wrapper">
           <div class="storeInfo__item">
             <div class="storeInfo__icon">
-              <img src="./images/wall-clock-icon.svg" alt="clock icon" />
+              <img
+                src="{{ url_for('static', filename='./images/wall-clock-icon.svg') }}"
+                alt="clock icon"
+              />
             </div>
             <h3 class="storeInfo__title">10 AM - 7 PM</h3>
             <p class="storeInfo__text">Opening Hour</p>
@@ -616,6 +662,6 @@
     <!-- aos script -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <!-- custom script -->
-    <script src="./main.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
   </body>
 </html>
