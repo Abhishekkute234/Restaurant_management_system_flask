@@ -1,0 +1,99 @@
+-- pip install virtualenv
+(we need virtual environment to run flask to not to play with the real python)
+
+--PS C:\Users\HP\OneDrive\Desktop\flask>  "Set-ExecutionPolicy -Scope CurrentUser" 
+Set-ExecutionPolicy -Scope CurrentUser
+PS C:\Users\HP\OneDrive\Desktop\flask> Set-ExecutionPolicy -scope CurrentUser
+
+cmdlet Set-ExecutionPolicy at command pipeline position 1
+Supply values for the following parameters:
+ExecutionPolicy: unrestricted
+
+
+-- virtualenv env
+.\env\Scripts\activate.ps1 --> to activate the virtual environment 
+
+--pip install flask (in virtual environment )
+
+-- Create app.py file
+
+-- Search on browser = Flask minimal app  -- Quick Start 1st web ---
+{from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!' } -- paste it in app.py
+
+
+-- if __name__=="__main__":
+    app.run(debug=True) -- to exicute the debug
+
+--python app.py (to run the app.py)    
+
+
+--@app.route('/')
+def hello_world():
+    return 'Hello, World!' (here ('/') is the route)
+
+-- Create static and template folders (seprate-seprate)
+
+--from flask import Flask , render_template -->> add at the top
+app = Flask(__name__)
+
+-- To render the HTML template 
+@app.route('/')
+def hello_world():
+    return render_template('index.html') <<<<<--------
+    # return 'hello world'          -- We can render it like this
+
+
+--Creation of database
+
+   -pip install flask-sqlalchemy --install it
+   -from sqlalchemy import SQlALchemy
+   -SQLALCHEMY_DATABASE_URI search this and 
+   -sqlite:////tmp/test.db                  -- Copy this
+
+
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///todo.db"           --name of the database is todo.db
+db = SQLAlchemy(app)  # Create a SQLAlchemy instance
+
+class Todo(db.Model):                                                 --this is the class in which all data tables are store
+    sno=db.Column(db.Integer,primary_key=True)
+    title=db.Column(db.String(200),nullable=False)
+    desc=db.Column(db.String,nullable=False)
+    date_created=db.Column(db.DateTime,default=datetime.utcnow)
+    
+    def __repr__(self) -> str:                                        -- formality  (return anytihng your want)               
+        return f"{self.sno} - {self.title}"
+    
+with app.app_context():                                                 --to create the databasetable in flask
+    db.create_all()
+
+
+--Go on browser to view SQliteviewer and drop your database in it 
+  to see yourdatabase
+
+
+-- Flask sqlalchemy - A Minimal Application -  
+
+--Jinja2 Snippet Kit install extension
+
+--@app.route('/show')
+def products():
+    alltodo=Todo.query.all() -- this is the main query
+    print(alltodo)
+    return 'This is a products page' -- to print the database in the terminal
+  
+-- TO add variables 
+ {% for todo in all_todos %}
+
+          <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{todo.title}}</td>
+            <td>{{todo.desc}}</td>
+            <td>{{todo.date_created}}</td>
+          </tr>
+
+          {% endfor %}
