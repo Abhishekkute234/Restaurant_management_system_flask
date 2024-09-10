@@ -33,7 +33,10 @@
       <div class="container">
         <div class="nav__wrapper">
           <a href="./index.html" class="logo">
-            <img src="./images/logo.svg" alt="shaif's cuisine" />
+            <img
+              src="{{ url_for('static', filename='./images/logo.svg') }}"
+              alt="restaurant logo"
+            />
           </a>
           <nav>
             <div class="nav__icon">
@@ -55,7 +58,7 @@
               </svg>
             </div>
             <div class="nav__bgOverlay"></div>
-            <ol class="nav__list">
+            <ul class="nav__list">
               <div class="nav__close">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -95,21 +98,12 @@
                   >
                 </li>
                 <li>
-                  <a class="nav__link" href="{{ url_for('booking_page') }}"
-                    >Contact</a
-                  >
-                </li>
-
-                <li>
-                  <a
-                    href="{{ url_for('booking_page') }}"
-                    class="btn primary-btn"
-                  >
+                  <a href="{{ url_for('booking') }}" class="btn primary-btn">
                     Book Table
                   </a>
                 </li>
               </div>
-            </ol>
+            </ul>
           </nav>
         </div>
       </div>
