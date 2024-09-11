@@ -84,9 +84,9 @@ def booking():
 
     return render_template('booking.html')  # Render booking form on GET request
 
-@app.route('/contact')
-def contact_page():
-    return render_template('contact.html')
+@app.route('/cart')
+def cart_page():
+    return render_template('cart.html')
 
 @app.route('/menu')
 def menu_page():
